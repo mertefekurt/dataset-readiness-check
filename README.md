@@ -1,45 +1,36 @@
-# Dataset Readiness Check
-
 ![Dataset Readiness Check cover](assets/readme-cover.svg)
+
+# Dataset Readiness Check
 
 > Review ML dataset manifests for split, leakage, label, and consent readiness
 
-![stack](https://img.shields.io/badge/stack-Python-16a34a?style=flat-square) ![python](https://img.shields.io/badge/python-3.11-dc2626?style=flat-square) ![license](https://img.shields.io/badge/license-MIT-7c3aed?style=flat-square) ![ci](https://img.shields.io/badge/ci-GitHub%20Actions-0891b2?style=flat-square)
+This is a review desk for dataset readiness. The useful part is not a dashboard; it is the tiny repeatable moment where vague records become specific findings.
 
-## At a glance
+## Finding catalog for `dataset-readiness-check`
 
-| Area | Detail |
-| --- | --- |
-| Focus | dataset readiness |
-| Command | `dataset-readiness-check` |
-| Formats | text, JSON, JSONL, CSV |
-| Output | Markdown table or JSON |
-
-## What it checks
-
-| Rule | Severity | What it catches |
+| Finding | Level | Why it matters |
 | --- | --- | --- |
 | `missing-consent` | high | dataset usage rights are unclear |
 | `missing-split` | medium | dataset split is incomplete |
 | `label-uncertainty` | low | label quality is uncertain |
 
-## Try it locally
+## Try the sample
 
 ```bash
+git clone https://github.com/mertefekurt/dataset-readiness-check.git
+cd dataset-readiness-check
+python -m venv .venv
+source .venv/bin/activate
 python -m pip install -e ".[dev]"
+```
+
+```bash
 dataset-readiness-check examples/sample.txt
-dataset-readiness-check examples/sample.txt --json --fail-on medium
+dataset-readiness-check examples/sample.txt --json
 ```
 
-## Notes from the code
+## Reading the output
 
-`rules.py` keeps the project policy explicit, while `core.py` handles parsing and report rendering. The CLI stays thin on purpose so the checks are easy to test.
-
-## Verify
-
-```bash
-python -m pip install -e ".[dev]"
-ruff check .
-pytest
-python -m dataset_readiness_check --help
-```
+- Markdown is meant for humans reviewing a change.
+- JSON is meant for CI, scripts, or saved reports.
+- `--fail-on` lets the repo decide how strict a gate should be.

@@ -1,13 +1,10 @@
-<svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dataset Readiness Check project cover">
-  <rect width="1280" height="420" rx="30" fill="#1f130f"/>
-  <path d="M0 332C168 286 293 306 420 336C560 369 699 376 853 325C1018 270 1148 277 1280 320V420H0V332Z" fill="#b45309" opacity=".16"/>
-  <path d="M86 84h500" stroke="#b45309" stroke-width="10" stroke-linecap="round"/>
-  <text x="86" y="176" fill="#fff7ed" font-family="Nunito Sans, ui-sans-serif, system-ui" font-size="42" font-weight="800">Dataset Readiness Check</text>
-  <text x="90" y="237" fill="#fed7aa" font-family="Nunito Sans, ui-sans-serif, system-ui" font-size="24" font-weight="500">Review ML dataset manifests for split,...</text>
-  <rect x="90" y="288" width="275" height="46" rx="23" fill="#b45309" opacity=".20"/>
-  <text x="118" y="319" fill="#fff7ed" font-family="Nunito Sans, ui-sans-serif, system-ui" font-size="18" font-weight="800" letter-spacing="1">DATASET READINESS</text>
+<svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dataset Readiness Check cover">
+  <rect width="1280" height="420" rx="28" fill="#24111f"/>
 
-  <path d="M780 242c62-108 143-151 244-129 44 10 79 32 108 66" fill="none" stroke="#b45309" stroke-width="16" stroke-linecap="round"/>
-  <path d="M793 191c77-49 158-55 242-18" fill="none" stroke="#f97316" stroke-width="10" stroke-linecap="round" opacity=".8"/>
-  <circle cx="1049" cy="142" r="18" fill="#fff7ed" opacity=".85"/>
+  <path d="M88 318h1104" stroke="#be185d" stroke-width="9" stroke-linecap="round"/>
+  <path d="M938 92c102 0 184 82 184 184" stroke="#f59e0b" stroke-width="16" stroke-linecap="round" opacity=".8"/>
+  <path d="M984 124c60 28 96 80 108 154" stroke="#fbcfe8" stroke-width="10" stroke-linecap="round"/>
+  <text x="88" y="176" fill="#fff1f2" font-family="IBM Plex Sans, ui-sans-serif, system-ui" font-size="45" font-weight="850">Dataset Readiness Check</text>
+  <text x="92" y="238" fill="#fbcfe8" font-family="IBM Plex Sans, ui-sans-serif, system-ui" font-size="24">Focused CLI for dataset readiness</text>
+  <text x="92" y="290" fill="#f59e0b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="700">DATA AND PRIVACY</text>
 </svg>
