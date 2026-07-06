@@ -1,71 +1,45 @@
-# dataset-readiness-check
+# Dataset Readiness Check
 
-`dataset-readiness-check` is a small local CLI that review ML dataset manifests for split, leakage, label, and consent readiness.
+![Dataset Readiness Check cover](assets/readme-cover.svg)
 
-## Why it is useful
+> Review ML dataset manifests for split, leakage, label, and consent readiness
 
-ML datasets need basic readiness checks before modeling. This CLI highlights missing splits, label uncertainty, and governance gaps.
+![stack](https://img.shields.io/badge/stack-Python-16a34a?style=flat-square) ![python](https://img.shields.io/badge/python-3.11-dc2626?style=flat-square) ![license](https://img.shields.io/badge/license-MIT-7c3aed?style=flat-square) ![ci](https://img.shields.io/badge/ci-GitHub%20Actions-0891b2?style=flat-square)
 
-## Key features
+## At a glance
 
-- reads text, JSON, JSONL, or CSV inputs
-- returns Markdown or JSON reports
-- supports severity-based CI exit codes
-- keeps all checks deterministic and offline
-- includes focused rules for this project:
-- `missing-consent`: dataset usage rights are unclear
-- `missing-split`: dataset split is incomplete
-- `label-uncertainty`: label quality is uncertain
+| Area | Detail |
+| --- | --- |
+| Focus | dataset readiness |
+| Command | `dataset-readiness-check` |
+| Formats | text, JSON, JSONL, CSV |
+| Output | Markdown table or JSON |
 
-## Installation
+## What it checks
+
+| Rule | Severity | What it catches |
+| --- | --- | --- |
+| `missing-consent` | high | dataset usage rights are unclear |
+| `missing-split` | medium | dataset split is incomplete |
+| `label-uncertainty` | low | label quality is uncertain |
+
+## Try it locally
 
 ```bash
 python -m pip install -e ".[dev]"
-```
-
-## Usage
-
-```bash
 dataset-readiness-check examples/sample.txt
-dataset-readiness-check examples/sample.txt --json
-dataset-readiness-check path/to/input.txt --fail-on medium --out report.md
-python -m dataset_readiness_check --help
+dataset-readiness-check examples/sample.txt --json --fail-on medium
 ```
 
-Example input:
+## Notes from the code
 
-```text
-labels unknown train only consent missing leakage possible
-```
+`rules.py` keeps the project policy explicit, while `core.py` handles parsing and report rendering. The CLI stays thin on purpose so the checks are easy to test.
 
-## CLI options
-
-```text
-dataset-readiness-check INPUT [--format auto|text|jsonl|csv|json] [--json]
-             [--fail-on low|medium|high] [--out PATH]
-```
-
-`INPUT` is any dataset manifest or README text. The tool exits with code `2` when findings meet the selected
-threshold, which makes it easy to use in GitHub Actions or release checks.
-
-## Workflow
-
-```mermaid
-flowchart LR
-    A[input file] --> B[format reader]
-    B --> C[project-specific rules]
-    C --> D[risk score]
-    D --> E[Markdown or JSON report]
-```
-
-## Tests
+## Verify
 
 ```bash
+python -m pip install -e ".[dev]"
 ruff check .
 pytest
 python -m dataset_readiness_check --help
 ```
-
-## License
-
-MIT
